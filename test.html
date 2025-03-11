@@ -3,68 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LegalTaskTracker Test Page</title>
+  <title>GitHub Pages Test</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
     }
     h1 {
       color: #0366d6;
     }
-    .option {
+    .card {
       border: 1px solid #e1e4e8;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
-    .button {
-      display: inline-block;
-      background-color: #0366d6;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: bold;
-      margin: 10px 0;
-    }
-    pre {
-      background-color: #f6f8fa;
-      padding: 10px;
-      border-radius: 4px;
-      overflow-x: auto;
+      border-radius: 6px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
 <body>
-  <h1>LegalTaskTracker Dashboard Test Page</h1>
+  <h1>Legal Task Tracker - GitHub Pages Test</h1>
   
-  <div class="option">
-    <h2>Option 1: Open Local HTML File</h2>
-    <p>The dashboard has been created as a static HTML file. You can view it directly by clicking:</p>
-    <a href="./index.html" class="button">Open Dashboard</a>
+  <div class="card">
+    <h2>If you can see this page, GitHub Pages is working!</h2>
+    <p>This is a test page to verify that basic HTML rendering works on your GitHub Pages site.</p>
+    <p>The main app might still have issues with paths or asset loading, but at least we know the GitHub Pages hosting itself is functional.</p>
   </div>
-  
-  <div class="option">
-    <h2>Option 2: View GitHub Pages Deployment</h2>
-    <p>The dashboard has been deployed to GitHub Pages and is available at:</p>
-    <a href="https://rsplitstone.github.io/rep1/" target="_blank" class="button">Open on GitHub Pages</a>
-  </div>
-  
-  <div class="option">
-    <h2>Option 3: Troubleshoot React Issues</h2>
-    <p>The React development server is failing because of missing component imports. To fix these issues, run:</p>
-    <pre>
-# Create missing component files
-touch client/src/components/ui/card.tsx
-touch client/src/components/ui/tabs.tsx
-touch client/src/components/ui/popover.tsx
-touch client/src/components/ui/label.tsx
-touch client/src/components/ui/badge.tsx
-touch client/src/components/ui/dialog.tsx</pre>
+
+  <div class="card">
+    <h2>Next steps:</h2>
+    <ul>
+      <li>Check browser console for errors in the main index.html</li>
+      <li>Verify that assets are being loaded from the correct paths</li>
+      <li>Check that the base path in vite.config.ts matches your repository name</li>
+    </ul>
   </div>
 </body>
 </html> 
