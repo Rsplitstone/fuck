@@ -1,36 +1,754 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Legal Task Tracker</title>
-    <!-- GitHub Pages SPA redirect script -->
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
-      // This script checks to see if a redirect is present in the query string,
-      // converts it back into the correct url and adds it to the
-      // browser's history using window.history.replaceState(...),
-      // which won't cause the browser to attempt to load the new url.
-      // When the single page app is loaded further down in this file,
-      // the correct url will be waiting in the browser's history for
-      // the single page app to route accordingly.
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Task Tracker - Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Header/Navigation -->
+  <header class="border-b bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-6">
+        <h1 class="text-xl font-bold text-blue-600">LegalTaskTracker</h1>
+        <nav class="hidden md:flex items-center space-x-4">
+          <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-blue-600 bg-blue-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+            Dashboard
+          </a>
+          <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Calendar
+          </a>
+          <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            Cases
+          </a>
+          <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 11 12 14 22 4"></polyline>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+            Tasks
+          </a>
+          <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            Documents
+          </a>
+          <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            Settings
+          </a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+          New Task
+        </button>
+        <button class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+          New Case
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 py-6">
+    <!-- Dashboard Header -->
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h1 class="text-3xl font-bold">Dashboard</h1>
+        <p class="text-gray-500">Your legal task management overview and priorities</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="relative">
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="search"
+            placeholder="Search cases, tasks or clients..."
+            class="w-[300px] pl-8 h-9 rounded-md border border-gray-300 px-3 py-1 text-sm shadow-sm"
+          />
+        </div>
+        <button class="inline-flex items-center justify-center h-9 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <polyline points="1 20 1 14 7 14"></polyline>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+          </svg>
+          Refresh
+        </button>
+        <button class="inline-flex items-center justify-center h-9 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+          New Task
+        </button>
+        <button class="inline-flex items-center justify-center h-9 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+          New Case
+        </button>
+      </div>
+    </div>
+
+    <!-- Status Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Critical Alerts -->
+      <div class="border border-gray-200 rounded-lg p-4 shadow-sm bg-white">
+        <div class="flex items-center mb-4">
+          <div class="text-red-500 mr-2">⚠️</div>
+          <h2 class="text-xl font-semibold">Critical Alerts</h2>
+        </div>
+        <p class="text-gray-500 mb-2">Tasks requiring immediate attention</p>
+        <div class="mt-8 text-center">
+          <p class="text-lg">No overdue tasks</p>
+        </div>
+      </div>
+
+      <!-- Upcoming Deadlines -->
+      <div class="border border-gray-200 rounded-lg p-4 shadow-sm bg-white">
+        <div class="flex items-center mb-4">
+          <div class="text-blue-500 mr-2">🕒</div>
+          <h2 class="text-xl font-semibold">Upcoming Deadlines</h2>
+        </div>
+        <p class="text-gray-500 mb-2">Next 0 tasks due in the next 7 days</p>
+        <div class="mt-8 text-center">
+          <p class="text-lg">No upcoming tasks</p>
+        </div>
+        <div class="mt-6">
+          <button class="inline-flex items-center justify-center w-full h-9 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            View Calendar
+          </button>
+        </div>
+      </div>
+
+      <!-- Tasks Overview -->
+      <div class="border border-gray-200 rounded-lg p-4 shadow-sm bg-white">
+        <div class="flex items-center mb-4">
+          <div class="text-green-500 mr-2">📊</div>
+          <h2 class="text-xl font-semibold">Tasks Overview</h2>
+        </div>
+        <p class="text-gray-500 mb-2">Task completion progress this week</p>
+        <div>
+          <div class="flex justify-between mb-2">
+            <span>Progress</span>
+            <span>0%</span>
+          </div>
+          <div class="relative h-2 w-full overflow-hidden rounded-full bg-gray-200 mb-6">
+            <div 
+              class="h-full w-full bg-blue-600 transition-all" 
+              style="transform: translateX(-100%)"
+            ></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mt-6">
+          <div class="bg-blue-50 p-4 rounded text-center">
+            <div class="text-2xl font-bold">0</div>
+            <div class="text-sm text-gray-500">Due this week</div>
+          </div>
+          <div class="bg-green-50 p-4 rounded text-center">
+            <div class="text-2xl font-bold">0</div>
+            <div class="text-sm text-gray-500">Completed</div>
+          </div>
+        </div>
+        <div class="mt-6">
+          <button class="inline-flex items-center justify-center w-full h-9 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+            View All Tasks
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Recommendations Section -->
+    <div class="mt-8 border border-blue-200 rounded-lg p-6 shadow-sm bg-blue-50">
+      <div class="flex justify-between">
+        <h2 class="text-xl font-semibold">AI Recommendations</h2>
+        <div class="text-xs bg-blue-500 text-white px-2 py-1 rounded">AI Powered</div>
+      </div>
+      <p class="text-gray-500 mb-4">Intelligent recommendations based on your caseload and deadlines</p>
+      
+      <div class="bg-white p-4 border-l-4 border-blue-500 rounded shadow-sm">
+        <h3 class="font-medium">Upcoming Events Reminder</h3>
+        <p class="text-sm text-gray-600 mt-1">
+          You have 0 tasks due in the next week. Consider reviewing your calendar to ensure proper preparation time.
+        </p>
+      </div>
+    </div>
+
+    <!-- Workers' Compensation Calendar Section - RIGHT AFTER AI RECOMMENDATIONS -->
+    <div class="mt-6 border-2 border-blue-500 rounded-lg p-6 bg-white shadow-lg">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Workers' Compensation Calendar</h2>
+      
+      <!-- Calendar Controls -->
+      <div class="flex justify-between items-center mb-6">
+        <button class="px-4 py-2 bg-gray-200 rounded" id="today-btn">Today</button>
+        <div class="text-xl font-bold" id="current-month">March 2025</div>
+        <div class="flex gap-2">
+          <button class="px-4 py-2 bg-blue-500 text-white rounded" id="prev-month-btn">Previous Month</button>
+          <button class="px-4 py-2 bg-blue-500 text-white rounded" id="next-month-btn">Next Month</button>
+        </div>
+      </div>
+      
+      <!-- Calendar Table -->
+      <div class="overflow-hidden border border-gray-200 rounded-lg">
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white" id="calendar-table">
+            <thead>
+              <tr>
+                <th class="py-2 px-3 border-b border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Sunday
+                </th>
+                <th class="py-2 px-3 border-b border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Monday
+                </th>
+                <th class="py-2 px-3 border-b border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Tuesday
+                </th>
+                <th class="py-2 px-3 border-b border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Wednesday
+                </th>
+                <th class="py-2 px-3 border-b border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Thursday
+                </th>
+                <th class="py-2 px-3 border-b border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Friday
+                </th>
+                <th class="py-2 px-3 border-b border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  Saturday
+                </th>
+              </tr>
+            </thead>
+            <tbody id="calendar-body">
+              <!-- Calendar content will be dynamically generated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Legend -->
+      <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="flex items-center">
+          <div class="w-4 h-4 rounded-full bg-purple-500 mr-2"></div>
+          <span class="text-sm">Hearings</span>
+        </div>
+        <div class="flex items-center">
+          <div class="w-4 h-4 rounded-full bg-blue-500 mr-2"></div>
+          <span class="text-sm">Depositions</span>
+        </div>
+        <div class="flex items-center">
+          <div class="w-4 h-4 rounded-full bg-red-500 mr-2"></div>
+          <span class="text-sm">Trials</span>
+        </div>
+        <div class="flex items-center">
+          <div class="w-4 h-4 rounded-full bg-amber-500 mr-2"></div>
+          <span class="text-sm">MSCs</span>
+        </div>
+        <div class="flex items-center">
+          <div class="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
+          <span class="text-sm">IMEs</span>
+        </div>
+        <div class="flex items-center">
+          <div class="w-4 h-4 rounded-full bg-indigo-500 mr-2"></div>
+          <span class="text-sm">Client Meetings</span>
+        </div>
+        <div class="flex items-center">
+          <div class="w-4 h-4 rounded-full bg-orange-500 mr-2"></div>
+          <span class="text-sm">Deadlines</span>
+        </div>
+      </div>
+      
+      <!-- Add New Task Button -->
+      <div class="mt-6">
+        <button class="w-full py-3 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-colors flex items-center justify-center" id="add-task-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+          </svg>
+          Add New Workers' Comp Task
+        </button>
+      </div>
+    </div>
+
+    <!-- List/Calendar View Toggle -->
+    <div class="mt-6 flex justify-between">
+      <div class="flex">
+        <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-l flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+          </svg>
+          List View
+        </button>
+        <button class="px-4 py-2 bg-white text-blue-600 border-t border-r border-b border-blue-600 rounded-r flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+          </svg>
+          Calendar View
+        </button>
+      </div>
+
+      <button class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+        </svg>
+        New Task
+      </button>
+    </div>
+  </div>
+
+  <!-- Task Modal (Hidden by default) -->
+  <div id="task-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+      <h3 class="text-xl font-bold mb-4">Add New Workers' Comp Task</h3>
+      <form id="new-task-form">
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Task Title</label>
+          <input type="text" id="task-title" class="w-full p-2 border border-gray-300 rounded-md" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Task Type</label>
+          <select id="task-type" class="w-full p-2 border border-gray-300 rounded-md" required>
+            <option value="">Select Type</option>
+            <option value="hearing">Hearing</option>
+            <option value="deposition">Deposition</option>
+            <option value="trial">Trial</option>
+            <option value="msc">MSC</option>
+            <option value="ime">IME</option>
+            <option value="meeting">Client Meeting</option>
+            <option value="deadline">Deadline</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+          <input type="date" id="task-date" class="w-full p-2 border border-gray-300 rounded-md" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+          <textarea id="task-description" class="w-full p-2 border border-gray-300 rounded-md" rows="3"></textarea>
+        </div>
+        <div class="flex justify-end gap-2 mt-6">
+          <button type="button" id="cancel-task-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded-md">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Firebase Scripts -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, query, orderBy, enableIndexedDbPersistence } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBebrL5IcjuK9LU7TRnJj3UVB7R_D__OA0",
+      authDomain: "legal-task-tracker.firebaseapp.com",
+      projectId: "legal-task-tracker",
+      storageBucket: "legal-task-tracker.appspot.com",
+      messagingSenderId: "599055222509",
+      appId: "1:599055222509:web:2a5215e5cefb7fa6aec26e"
+    };
+
+    // Initialize Firebase
+    let app;
+    let db;
+    
+    try {
+      app = initializeApp(firebaseConfig);
+      db = getFirestore(app);
+      
+      // Enable offline persistence - helps with GitHub Pages
+      enableIndexedDbPersistence(db)
+        .then(() => {
+          console.log("Offline persistence enabled!");
+        })
+        .catch((err) => {
+          console.error("Error enabling offline persistence:", err);
+          if (err.code === 'failed-precondition') {
+            console.warn("Multiple tabs open, persistence can only be enabled in one tab at a time.");
+          } else if (err.code === 'unimplemented') {
+            console.warn("The current browser doesn't support all of the features required to enable persistence");
+          }
+        });
+    } catch (error) {
+      console.error("Error initializing Firebase:", error);
+      alert("Could not connect to Firebase. Using local storage instead.");
+    }
+
+    // Calendar data and functions
+    let currentDate = new Date();
+    let events = []; // Will store our events
+    
+    // Fallback to local storage if Firebase fails
+    function useLocalStorage() {
+      // Load events from localStorage
+      try {
+        const storedEvents = localStorage.getItem('workerCompEvents');
+        if (storedEvents) {
+          events = JSON.parse(storedEvents);
+        } else {
+          // Sample events if none exist
+          events = [
+            {
+              id: '1',
+              title: 'Client Deposition',
+              type: 'deposition',
+              date: '2024-03-15',
+              description: 'Smith vs XYZ Corp deposition'
+            },
+            {
+              id: '2',
+              title: 'Status Conference',
+              type: 'hearing',
+              date: '2024-03-20',
+              description: 'Status hearing for Johnson case'
+            }
+          ];
+          localStorage.setItem('workerCompEvents', JSON.stringify(events));
         }
-      }(window.location))
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.tsx"></script>
-  </body>
-</html> 
+      } catch (error) {
+        console.error("Error with localStorage:", error);
+        events = [];
+      }
+    }
+
+    // Function to generate calendar
+    function generateCalendar(year, month) {
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const startDate = new Date(firstDay);
+      startDate.setDate(startDate.getDate() - startDate.getDay()); // Start from Sunday
+      
+      const calendarBody = document.getElementById('calendar-body');
+      calendarBody.innerHTML = ''; // Clear previous content
+      
+      // Set current month display
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+      document.getElementById('current-month').textContent = `${monthNames[month]} ${year}`;
+      
+      // Generate rows and cells
+      let date = new Date(startDate);
+      for (let week = 0; week < 6; week++) {
+        const row = document.createElement('tr');
+        
+        for (let day = 0; day < 7; day++) {
+          const cell = document.createElement('td');
+          cell.className = 'border p-2 h-24 align-top';
+          
+          // Check if date is in current month
+          const isCurrentMonth = date.getMonth() === month;
+          
+          // Create date number
+          const dateDiv = document.createElement('div');
+          dateDiv.className = `text-sm ${isCurrentMonth ? '' : 'text-gray-300'}`;
+          dateDiv.textContent = date.getDate();
+          cell.appendChild(dateDiv);
+          
+          // Highlight today
+          const today = new Date();
+          if (date.getDate() === today.getDate() && 
+              date.getMonth() === today.getMonth() && 
+              date.getFullYear() === today.getFullYear()) {
+            cell.classList.add('bg-blue-50');
+            dateDiv.className = 'text-sm font-bold bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center';
+          }
+          
+          // Add events for this day
+          const eventsContainer = document.createElement('div');
+          eventsContainer.className = 'mt-1';
+          
+          // Find events for this date
+          const dateStr = date.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+          const dayEvents = events.filter(event => {
+            const eventDate = new Date(event.date);
+            return eventDate.toISOString().split('T')[0] === dateStr;
+          });
+          
+          // Add each event
+          dayEvents.forEach(event => {
+            const eventDiv = document.createElement('div');
+            eventDiv.className = `text-xs my-1 p-1 truncate rounded bg-${getEventColor(event.type)} text-white cursor-pointer`;
+            eventDiv.textContent = event.title;
+            eventDiv.title = event.description || event.title;
+            eventDiv.addEventListener('click', () => showEventDetails(event));
+            eventsContainer.appendChild(eventDiv);
+          });
+          
+          cell.appendChild(eventsContainer);
+          row.appendChild(cell);
+          
+          // Move to next day
+          date.setDate(date.getDate() + 1);
+        }
+        
+        calendarBody.appendChild(row);
+        
+        // Break if we've gone past the end of the month
+        if (date.getMonth() !== month && week > 3) break;
+      }
+    }
+
+    // Get color based on event type
+    function getEventColor(type) {
+      const colors = {
+        'hearing': 'purple-500',
+        'deposition': 'blue-500',
+        'trial': 'red-500',
+        'msc': 'amber-500',
+        'ime': 'green-500',
+        'meeting': 'indigo-500',
+        'deadline': 'orange-500'
+      };
+      return colors[type] || 'gray-500';
+    }
+
+    // Load events from Firebase with localStorage fallback
+    async function loadEvents() {
+      try {
+        // Try Firebase first
+        const eventsCollection = collection(db, 'events');
+        const q = query(eventsCollection, orderBy('date'));
+        const querySnapshot = await getDocs(q);
+        
+        events = [];
+        querySnapshot.forEach((doc) => {
+          events.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+        
+        console.log("Loaded events from Firebase:", events.length);
+        
+        // Refresh calendar display
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+      } catch (error) {
+        console.error("Error loading events from Firebase, falling back to localStorage:", error);
+        useLocalStorage();
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+      }
+    }
+
+    // Save new event to Firebase with localStorage fallback
+    async function saveEvent(event) {
+      try {
+        // Try Firebase first
+        const docRef = await addDoc(collection(db, "events"), event);
+        console.log("Event saved to Firebase with ID:", docRef.id);
+        
+        // Refresh events and calendar
+        await loadEvents();
+        return true;
+      } catch (error) {
+        console.error("Error adding event to Firebase, using localStorage instead:", error);
+        
+        // Fallback to localStorage
+        event.id = Date.now().toString(); // Generate a unique ID
+        events.push(event);
+        localStorage.setItem('workerCompEvents', JSON.stringify(events));
+        
+        // Refresh calendar display
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+        return true;
+      }
+    }
+
+    // Show event details
+    function showEventDetails(event) {
+      alert(`Event: ${event.title}\nDate: ${event.date}\nType: ${event.type}\n${event.description || ''}`);
+    }
+
+    // Initialize calendar
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log("DOM loaded, initializing calendar");
+      
+      // Generate initial calendar
+      generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+      
+      // Load events
+      loadEvents();
+      
+      // Set up calendar navigation buttons
+      document.getElementById('today-btn').addEventListener('click', () => {
+        console.log("Today button clicked");
+        currentDate = new Date();
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+      });
+      
+      document.getElementById('prev-month-btn').addEventListener('click', () => {
+        console.log("Previous month button clicked");
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+      });
+      
+      document.getElementById('next-month-btn').addEventListener('click', () => {
+        console.log("Next month button clicked");
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+      });
+      
+      // Set up modal functionality
+      const modal = document.getElementById('task-modal');
+      const addTaskBtn = document.getElementById('add-task-btn');
+      const cancelTaskBtn = document.getElementById('cancel-task-btn');
+      const newTaskForm = document.getElementById('new-task-form');
+      
+      // Make sure all elements exist before adding event listeners
+      if (!modal || !addTaskBtn || !cancelTaskBtn || !newTaskForm) {
+        console.error("Critical UI elements missing:");
+        console.error("Modal:", modal);
+        console.error("Add Task Button:", addTaskBtn);
+        console.error("Cancel Task Button:", cancelTaskBtn);
+        console.error("New Task Form:", newTaskForm);
+        alert("Some UI elements are missing. Please check the console for details.");
+      } else {
+        console.log("All UI elements found, setting up event listeners");
+        
+        // Add task button - opens the modal
+        addTaskBtn.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent default button behavior
+          console.log("Add task button clicked");
+          modal.classList.remove('hidden');
+        });
+        
+        // Add direct click listener to cancel button  
+        cancelTaskBtn.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent default button behavior
+          console.log("Cancel button clicked");
+          modal.classList.add('hidden');
+          newTaskForm.reset();
+        });
+        
+        // Form submission
+        newTaskForm.addEventListener('submit', async function(e) {
+          e.preventDefault(); // Prevent form submission
+          console.log("Form submitted");
+          
+          try {
+            const newEvent = {
+              title: document.getElementById('task-title').value,
+              type: document.getElementById('task-type').value,
+              date: document.getElementById('task-date').value,
+              description: document.getElementById('task-description').value,
+              created: new Date().toISOString()
+            };
+            
+            console.log("New event data:", newEvent);
+            
+            // Validate form data
+            if (!newEvent.title || !newEvent.type || !newEvent.date) {
+              alert("Please fill out all required fields");
+              return;
+            }
+            
+            console.log("Saving new event:", newEvent);
+            const success = await saveEvent(newEvent);
+            if (success) {
+              console.log("Event saved successfully");
+              modal.classList.add('hidden');
+              newTaskForm.reset();
+            } else {
+              console.error("Failed to save event");
+              alert("Failed to save event. Please try again.");
+            }
+          } catch (error) {
+            console.error("Error in form submission:", error);
+            alert("An error occurred while saving your task. Please try again.");
+          }
+        });
+        
+        // Also add click handlers to the other "New Task" buttons in the UI
+        const allNewTaskButtons = document.querySelectorAll('button:not(#add-task-btn)');
+        allNewTaskButtons.forEach(button => {
+          if (button.textContent.includes('New Task')) {
+            console.log("Adding event listener to additional New Task button");
+            button.addEventListener('click', function() {
+              console.log("Additional New Task button clicked");
+              modal.classList.remove('hidden');
+            });
+          }
+        });
+      }
+      
+      // Add event listener to close modal when clicking outside
+      window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          console.log("Clicked outside modal, closing");
+          modal.classList.add('hidden');
+          newTaskForm.reset();
+        }
+      });
+    });
+  </script>
+  
+  <!-- Error logging script -->
+  <script>
+    // Log all errors to console
+    window.addEventListener('error', function(e) {
+      console.error('Global error:', e.message, e.filename, e.lineno);
+    });
+    
+    // Check if all buttons exist
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Checking buttons...');
+      const buttons = [
+        'add-task-btn',
+        'today-btn',
+        'prev-month-btn',
+        'next-month-btn',
+        'cancel-task-btn'
+      ];
+      
+      buttons.forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+          console.log(`Button ${id} found`);
+        } else {
+          console.error(`Button ${id} not found!`);
+        }
+      });
+      
+      // Test button click on add-task-btn 
+      const addTaskBtn = document.getElementById('add-task-btn');
+      if (addTaskBtn) {
+        console.log('Adding manual click listener to add-task-btn');
+        addTaskBtn.addEventListener('click', function() {
+          console.log('Add task button clicked manually');
+          document.getElementById('task-modal').classList.remove('hidden');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
