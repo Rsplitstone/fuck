@@ -1,0 +1,161 @@
+{
+  "cases": [
+    {
+      "id": 1,
+      "name": "Smith v. Johnson",
+      "number": "CV-2023-1234",
+      "description": "Personal injury case from auto accident",
+      "status": "Active",
+      "clientName": "John Smith",
+      "courtName": "Superior Court of California",
+      "caseType": "Personal Injury",
+      "createdAt": "2023-01-15T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Martinez Employment Dispute",
+      "number": "CV-2023-5678",
+      "description": "Wrongful termination claim",
+      "status": "Active",
+      "clientName": "Maria Martinez",
+      "courtName": "U.S. District Court",
+      "caseType": "Employment",
+      "createdAt": "2023-03-22T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Thompson Trust Litigation",
+      "number": "PR-2023-9012",
+      "description": "Dispute over trust distribution",
+      "status": "Pending",
+      "clientName": "Robert Thompson",
+      "courtName": "Probate Court",
+      "caseType": "Trust & Estate",
+      "createdAt": "2023-05-10T00:00:00.000Z"
+    }
+  ],
+  "taskCategories": [
+    {
+      "id": 1,
+      "name": "Discovery",
+      "description": "Tasks related to discovery process",
+      "color": "#E53E3E"
+    },
+    {
+      "id": 2,
+      "name": "Client Communication",
+      "description": "Client meetings and updates",
+      "color": "#38A169"
+    },
+    {
+      "id": 3,
+      "name": "Court Filings",
+      "description": "Preparing and filing court documents",
+      "color": "#3182CE"
+    },
+    {
+      "id": 4,
+      "name": "Research",
+      "description": "Legal research tasks",
+      "color": "#805AD5"
+    },
+    {
+      "id": 5,
+      "name": "Deposition",
+      "description": "Deposition preparation and attendance",
+      "color": "#DD6B20"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Review medical records for Smith case",
+      "description": "Go through all medical records provided by the hospital",
+      "status": "In Progress",
+      "priority": "High",
+      "dueDate": "2023-11-15T00:00:00.000Z",
+      "caseId": 1,
+      "categoryId": 1,
+      "createdAt": "2023-10-15T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Prepare deposition questions for Dr. Williams",
+      "description": "Draft questions for expert witness deposition",
+      "status": "Not Started",
+      "priority": "Critical",
+      "dueDate": "2023-11-20T00:00:00.000Z",
+      "caseId": 1,
+      "categoryId": 5,
+      "createdAt": "2023-10-18T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Schedule client meeting for Martinez case",
+      "description": "Set up meeting to discuss settlement options",
+      "status": "Completed",
+      "priority": "Medium",
+      "dueDate": "2023-10-25T00:00:00.000Z",
+      "caseId": 2,
+      "categoryId": 2,
+      "createdAt": "2023-10-10T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "title": "Draft motion for summary judgment",
+      "description": "Prepare motion documents for Thompson case",
+      "status": "Not Started",
+      "priority": "High",
+      "dueDate": "2023-12-05T00:00:00.000Z",
+      "caseId": 3,
+      "categoryId": 3,
+      "createdAt": "2023-10-22T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "title": "Research precedent cases",
+      "description": "Find similar cases to support our argument",
+      "status": "In Progress",
+      "priority": "Medium",
+      "dueDate": "2023-11-10T00:00:00.000Z",
+      "caseId": 2,
+      "categoryId": 4,
+      "createdAt": "2023-10-05T00:00:00.000Z"
+    }
+  ],
+  "calendarEvents": [
+    {
+      "id": 1,
+      "title": "Smith Case Deposition",
+      "caseId": 1,
+      "taskId": 2,
+      "startDate": "2023-11-25T09:00:00.000Z",
+      "endDate": "2023-11-25T12:00:00.000Z",
+      "location": "Law Office Conference Room A",
+      "description": "Deposition of Dr. Williams, expert witness",
+      "eventType": "Deposition",
+      "isAllDay": false
+    },
+    {
+      "id": 2,
+      "title": "Martinez Case Settlement Conference",
+      "caseId": 2,
+      "startDate": "2023-12-10T14:00:00.000Z",
+      "endDate": "2023-12-10T16:00:00.000Z",
+      "location": "Courthouse Room 305",
+      "description": "Court-ordered settlement conference",
+      "eventType": "Hearing",
+      "isAllDay": false
+    },
+    {
+      "id": 3,
+      "title": "Thompson Case Filing Deadline",
+      "caseId": 3,
+      "taskId": 4,
+      "startDate": "2023-12-05T00:00:00.000Z",
+      "description": "Deadline for motion for summary judgment",
+      "eventType": "Deadline",
+      "isAllDay": true
+    }
+  ]
+} 
